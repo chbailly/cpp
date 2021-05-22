@@ -1,4 +1,4 @@
-# file1
+# template
 
 source: `{{ page.path }}`
 
