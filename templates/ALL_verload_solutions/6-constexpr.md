@@ -1,5 +1,5 @@
 
-#  6-constexpr , constrexpr if
+#  6-constexpr , constexpr if
 Créée le mardi 06 avril 2021
 
 constexpr if permet de supprimer des conditions de branche à la compilation
