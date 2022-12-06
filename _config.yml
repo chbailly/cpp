@@ -2,7 +2,8 @@ title: Your awesome title
 lang: en
 description: Write an awesome description for your new site here
 
-remote_theme: rundocs/jekyll-rtd-theme
+#remote_theme: rundocs/jekyll-rtd-theme
+remote_theme: pages-themes/architect@v0.2.0
 
 readme_index:
   with_frontmatter: true
@@ -13,8 +14,9 @@ exclude:
   - Gemfile.lock
 
 plugins:
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
 
-remote_theme: minima
+
