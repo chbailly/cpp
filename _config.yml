@@ -16,3 +16,5 @@ plugins:
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
+
+remote_theme: minima
