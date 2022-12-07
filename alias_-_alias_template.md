@@ -21,8 +21,10 @@ pour implémenter des traits
 template<class T> struct Alloc { }; => Permet 
 ```
 **spécialisation**'' selon le type=> on implementera plusieurs fonctions''
-''template<class T> using Vec = vector<T, Alloc<T>>; // type-id is vector<T, Alloc<T>>''
-''Vec<int> v;'' 
+```cpp
+template<class T> using Vec = vector<T, Alloc<T>>; // type-id is vector<T, Alloc<T>>''
+Vec<int> v;
+```
 
 Evite de faire avec typedef type
 
@@ -44,5 +46,4 @@ On peut faire la même chose pour des value traits.
 
 template<typename T> constexpr T pi = T(3.14159265358979323846);
 t''emplate<class T> using myClass = Class2<T, pi<T>>; ''
-
 
