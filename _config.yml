@@ -2,8 +2,8 @@ title: Your awesome title
 lang: en
 description: Write an awesome description for your new site here
 
-#remote_theme: rundocs/jekyll-rtd-theme
-remote_theme: pages-themes/architect@v0.2.0
+remote_theme: rundocs/jekyll-rtd-theme
+
 
 readme_index:
   with_frontmatter: true
