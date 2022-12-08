@@ -22,19 +22,26 @@ int parallel_sum(RandomIt beg, RandomIt end)
 * promise permet de setter une valeur. On passe le promise au thread qui pourra setter la valeur
 * Future (associé à promise) : promise.get_future() => on purra faire un get() en attendant de récupérer la valeur. 
 
- ''std::future<int> prodResult= prodPromise.get_future()''
-''std::future<int> divResult= divPromise.get_future();''
+```cpp
+void product(std::promise<int>&& intPromise, int a, int b){     // (1)
+  intPromise.set_value(a * b);
+}
 
-''// calculate the result in a separat thread''
-''std::thread prodThread(product,std::move(prodPromise),a,b);''
-''Div div;''
-''std::thread divThread(div,std::move(divPromise),a,b);''
-''// get the result''
-''std::cout << "20*10= " << prodResult.get() << std::endl;''
-''std::cout << "20/10= " << divResult.get() << std::endl;''
+std::promise<int> prodPromise;
+std::future<int> prodResult= prodPromise.get_future();
+std::future<int> divResult= divPromise.get_future();
 
-  ''prodThread.join();''
-''divThread.join();''
+// calculate the result in a separat thread
+std::thread prodThread(product,std::move(prodPromise),a,b);
+Div div;
+std::thread divThread(div,std::move(divPromise),a,b);
+// get the result
+std::cout << "20*10= " << prodResult.get() << std::endl;
+std::cout << "20/10= " << divResult.get() << std::endl;
+
+prodThread.join();
+divThread.join();
+```
 
 Les promise + thread peuvent être movés
 
@@ -49,6 +56,7 @@ Policy:
 
 exemple (avec le set on envoie une sorte de signal)
 
+```cpp
 std::shared_future<void> ready_future(ready_promise.get_future())
 
  auto fun1 = [&, ready_future]() -> std::chrono::duration<double, std::milli>  {
@@ -65,6 +73,5 @@ auto fun2 = [&, ready_future]() -> std::chrono::duration<double, std::milli> {
   auto result2 = std::async(std::launch::async, fun2);
 
 ready_promise.set_value();
-
-
+```
 
