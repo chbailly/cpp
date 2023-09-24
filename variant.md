@@ -6,7 +6,7 @@ Créée le dimanche 09 mai 2021
 
 ##  Avec class Visitor 
 
-
+```cpp
 using var_t = std::variant<int, const char*>; // (1)
 
 struct Print { // (2)
@@ -18,6 +18,9 @@ struct Print { // (2)
 		puts(str);
 	}
 };
+var_t v;
+std::visit(Print(), v);
+```
 
 ##  Avec mot clef overloaded: 
 
@@ -34,7 +37,6 @@ int main() {
 
 
 ##  std::monostate() 
-
 
 C'est le type sans résultat: exemple traiter solution equation 2sd degré.
 return std::monostate() si pas de solution
